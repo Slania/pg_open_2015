@@ -6,13 +6,13 @@ An important class of such data stores involves the use of directories to track 
  
 ## Postgres as a directory service store
  
-I would like to present my experience of implementing a distributed system using Postgres as the underlying database to maintain these directories. They are essentially implementations of replicated state-based logs. Since directory lookups lie in the critical path of data fetch, low latency lookups become critical. The salient features of the directory service include:
+I would like to present my experience of implementing a distributed system using Postgres as the underlying database to maintain these directories, which are in essence replicated state-based logs. My implementation is the first known open-source implementation of such a directory-lookup system built on a strong-consistency aware protocol like Paxos. The results of testing also happen to be the first openly published results on the performance of the Paxos protocol in a WAN setting. 
+The salient features of the implemented service include:
  
- * 1) Low-latency
- * 2) Fault tolerant
- * 3) Distributed
- * and most importantly, Correct (Complete and Consistent)
+ * 1) Fault tolerant
+ * 2) Distributed
+ * 3) and most importantly, Correct (Complete and Consistent)
 
 ## Paxos as a Multi-Master read/write solution (strict consistency)
 
-When we start talking about Multi-Master writes, the topic of consistency almost goes hand-in-hand. Consistency has traditionally been a widely researched computer science problem with distributed systems, and we have recently come to defines shades of gray of consistency. I will also discuss what the implementation of strict-consistency for a Multi-Master solution looks like, what the overheads are (when deployed in a WAN environment) and what genre of systems it makes sense to have Multi-Master write solutions on.
+When we start talking about Multi-Master writes, the topic of consistency almost goes hand-in-hand. Consistency has traditionally been a widely researched computer science problem with distributed systems, and we have recently come to define shades of gray for consistency. I want to highlight upon the implementation of strict-consistency for a Multi-Master solution, the overheads (when deployed in a WAN environment) and what genre of systems it makes sense to have Multi-Master write solutions on.
