@@ -10,9 +10,9 @@ I would like to present my experience of implementing a distributed system using
 The salient features of the implemented service include:
  
  * 1) Fault tolerant
- * 2) Distributed
+ * 2) Distributed, Low-Latency
  * 3) and most importantly, Correct (Complete and Consistent)
 
 ## Paxos as a Multi-Master read/write solution (strict consistency)
 
-When we start talking about Multi-Master writes, the topic of consistency almost goes hand-in-hand. Consistency has traditionally been a widely researched computer science problem with distributed systems, and we have recently come to define shades of gray for consistency. I want to highlight upon the implementation of strict-consistency for a Multi-Master solution, the overheads (when deployed in a WAN environment) and what genre of systems it makes sense to have Multi-Master write solutions on.
+When we start talking about Multi-Master writes, the topic of consistency almost goes hand-in-hand. Consistency has traditionally been a widely researched computer science problem with distributed systems, and we have recently come to define shades of gray for consistency for different classes of systems. I want to highlight upon the implementation aspects of the system in terms of strict-consistency when applied to a Multi-Master solution, and the overheads (when deployed in a WAN environment) involved.
